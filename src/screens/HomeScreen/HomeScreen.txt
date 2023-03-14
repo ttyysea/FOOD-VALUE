@@ -1,0 +1,559 @@
+import { View, FlatList, Text, StyleSheet,Dimensions, TouchableOpacity,  TextInput, Image, } from 'react-native'
+import React from 'react'
+import { ScrollView } from 'react-native-gesture-handler';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TopTab from '../../components/TopTab';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { useNavigation } from '@react-navigation/native';
+import { useState, useEffect } from "react"
+
+const deviceWidth = Math.round(Dimensions.get('window').width)
+const radius = 20;
+
+
+
+const HomeScreen = () => {
+
+  const [items, setItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('http://10.0.2.2:5000/api/attractions')
+      .then(res => res.json())
+      .then((result) => {
+    
+        console.log(result)
+      })
+  }, [])
+
+  const navigation = useNavigation();
+  const onMouse = () => {
+    navigation.navigate('Food');
+  };
+
+  const renderItem = ({ item }) => (
+    <View>
+      <Text>{item.name}</Text>
+    </View>
+  )
+
+  
+  return (
+    <ScrollView style={styles.background} showsVerticalScrollIndicator={false}>
+      <View >
+        <SearchBar/>
+        <Text style={{color: "#494948"}}>────────────────────────────────────</Text>
+        
+
+        
+        <View 
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 25,
+            
+
+          }}
+        >
+          <Text style={styles.textBig}>
+            ภาคเหนือ
+          </Text>
+          <Text style={styles.textSmall}>
+            ทั้งหมด
+          </Text>
+        </View>
+        
+        
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+
+        <View 
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 25,
+            
+
+          }}
+        >
+          <Text style={styles.textBig}>
+            ภาคใต้
+          </Text>
+          <Text style={styles.textSmall}>
+            ทั้งหมด
+          </Text>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+
+        <View 
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 25,
+            
+
+          }}
+        >
+          <Text style={styles.textBig}>
+            ภาคอีสาน
+          </Text>
+          <Text style={styles.textSmall}>
+            ทั้งหมด
+          </Text>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+
+        <View 
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 25,
+            
+
+          }}
+        >
+          <Text style={styles.textBig}>
+            ภาคกลาง
+          </Text>
+          <Text style={styles.textSmall}>
+            ทั้งหมด
+          </Text>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardContainer} onPress={onMouse} >
+              <Image 
+                style={styles.imageStyle}
+                source={require('../../../assets/images/kaosoy.jpg')} />
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 15,}}
+              >
+                <Text>ข้าวซอย</Text>
+                <Icon name="heart" size={30} color="black" solid />
+              </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
+    
+
+  )
+};
+
+const styles = StyleSheet.create({
+  background:{
+    backgroundColor:'#1C1D1B'
+  },
+  root: {
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#1C1D1B',
+  },
+  title:{
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    margin: 10,
+  },
+  text: { 
+    color: 'white',
+    marginVertical: 10,
+  },
+  link: {
+    color: '#4B50C1',
+  },
+  touchBox: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 30,
+    backgroundColor: 'white',
+    width: '45%',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  textBig:{
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  textSmall: {
+    fontSize: 14,
+    color: '#9EA4A9',
+    opacity: 0.5,
+
+  },
+  cardContainer: {
+    
+    marginBottom: 10,
+    width: 150,
+    backgroundColor: "#494948",
+    height: 190,
+    marginLeft:20,
+    borderRadius: radius,
+    shadowColor: "white",
+    shadowOffset:{
+      width: 5,
+      height: 5,
+    },
+  },
+  imageStyle: {
+    height: 140,
+    width: 150,
+    borderTopLeftRadius: radius,
+    borderTopRightRadius: radius,
+  },
+
+
+});
+export default HomeScreen;
+
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema foodvalue
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema foodvalue
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `foodvalue` DEFAULT CHARACTER SET utf8mb4 ;
+USE `foodvalue` ;
+
+-- -----------------------------------------------------
+-- Table `foodvalue`.`food`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `foodvalue`.`food` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `foodname` VARCHAR(255) NOT NULL,
+  `image` TEXT NOT NULL,
+  `nutrition` TEXT NOT NULL,
+  `ingredients` TEXT NOT NULL,
+  `typefood` VARCHAR(100) NOT NULL,
+  `kcal` TEXT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `foodvalue`.`restaurant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `foodvalue`.`restaurant` (
+  `idres` INT(100) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `latitude` FLOAT(31,22) NOT NULL,
+  `longtitude` FLOAT(31,22) NOT NULL,
+  `picstore` TEXT NOT NULL,
+  `timeopen` TEXT NOT NULL,
+  PRIMARY KEY (`idres`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `foodvalue`.`food_has_restaurant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `foodvalue`.`food_has_restaurant` (
+  `food_id` INT(11) NOT NULL,
+  `restaurant_id` INT(100) NOT NULL,
+  PRIMARY KEY (`food_id`, `restaurant_id`),
+  INDEX `fk_food_has_restaurant_restaurant1_idx` (`restaurant_id` ASC),
+  INDEX `fk_food_has_restaurant_food_idx` (`food_id` ASC),
+  CONSTRAINT `fk_food_has_restaurant_food`
+    FOREIGN KEY (`food_id`)
+    REFERENCES `foodvalue`.`food` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_food_has_restaurant_restaurant1`
+    FOREIGN KEY (`restaurant_id`)
+    REFERENCES `foodvalue`.`restaurant` (`idres`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `foodvalue`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `foodvalue`.`users` (
+  `userid` INT(100) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `firstname` VARCHAR(100) NOT NULL,
+  `lastname` VARCHAR(100) NOT NULL,
+  `age` INT(100) NOT NULL,
+  `height` FLOAT(120,10) NOT NULL,
+  `weight` FLOAT(120,10) NOT NULL,
+  PRIMARY KEY (`userid`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 23
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `foodvalue`.`lovefood`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `foodvalue`.`lovefood` (
+  `users_userid` INT(100) NOT NULL,
+  `food_id` INT(11) NOT NULL,
+  `loveid` INT(11) NOT NULL,
+  `status` TINYINT(4) NULL DEFAULT NULL,
+  PRIMARY KEY (`users_userid`, `food_id`, `loveid`),
+  INDEX `fk_users_has_food_food1_idx` (`food_id` ASC),
+  INDEX `fk_users_has_food_users1_idx` (`users_userid` ASC),
+  CONSTRAINT `fk_users_has_food_food1`
+    FOREIGN KEY (`food_id`)
+    REFERENCES `foodvalue`.`food` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_has_food_users1`
+    FOREIGN KEY (`users_userid`)
+    REFERENCES `foodvalue`.`users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

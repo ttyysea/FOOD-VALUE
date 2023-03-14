@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Button, Text, FlatList } from 'react-native';
+
+
+const SearchScreen = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    // Make a fetch request to the server to retrieve all food items
+    fetch('http://192.168.1.7:5000/food')
+      .then(response => response.json())
+      .then(data => setResults(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  const handleSearch = () => {
+    // Make a fetch request to the server to search the database
+    fetch(`http://192.168.1.7:5000/food/search?q=${searchTerm}`)
+      .then(response => response.json())
+      .then(data => setResults(data))
+      .catch(error => console.error(error));
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.cardContainer} onPress={() => goDetail(item.id)} >
+          <Image 
+            style={styles.imageStyle}
+            source={{uri : item.image }} />
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              padding: 15,}}
+          >
+            <Text>{item.foodname}</Text>
+            <Text>{item.typefood}</Text>
+          </View>
+    </TouchableOpacity>
+  )
+
+  return (
+    <View>
+      <TextInput
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+        placeholder="Search for food"
+      />
+      <Button title="Search" onPress={handleSearch} />
+      {results.length > 0 ? (
+        <FlatList
+          data={results}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+      ) : (
+        <Text>No results</Text>
+      )}
+    </View>
+
+
+
+  )
+}
+
+export default SearchScreen;
